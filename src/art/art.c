@@ -1758,8 +1758,7 @@ static void art_sort_free_lists(art_t *art) {
     for (art_typecode_t type = CROARING_ART_LEAF_TYPE;
          type <= CROARING_ART_NODE256_TYPE; ++type) {
         bool *free_indices =
-            (bool *)roaring_malloc(art->capacities[type] * sizeof(bool));
-        memset(free_indices, false, art->capacities[type] * sizeof(bool));
+            (bool *)roaring_calloc(art->capacities[type], sizeof(bool));
 
         for (uint64_t i = art->first_free[type]; i < art->capacities[type];
              i = art_node_get_next_free(art, art_to_ref(i, type))) {
