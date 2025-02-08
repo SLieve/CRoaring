@@ -1,12 +1,6 @@
 name: Ubuntu s390x (GCC 11)
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: [push, pull_request]
 
 permissions:
   contents: read
